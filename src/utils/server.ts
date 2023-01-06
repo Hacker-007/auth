@@ -5,6 +5,10 @@ import { Server } from 'http'
 import routeLogger from './routeLogger'
 import setupRoutes from '@src/routes'
 
+interface ServerOptions {
+  port: number
+}
+
 export function createServer() {
   const app = express()
   app.use(express.json())
@@ -16,10 +20,6 @@ export function createServer() {
   app.use('/api/v1', setupRoutes())
 
   return app
-}
-
-interface ServerOptions {
-  port: number
 }
 
 export function runServer(app: Express, options: ServerOptions) {
